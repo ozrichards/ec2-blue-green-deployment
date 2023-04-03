@@ -27,7 +27,7 @@ Blue/green deployment involves two production environments:
  - You can perform testing on the green environment without disrupting the blue environment.
  - Switching to the green environment involves no downtime. It only requires the redirecting of user traffic.
  - Rolling back from the green environment to the blue environment in the event of a problem is easier because you can redirect traffic to the blue environment without having to rebuild it.
- - You can incorporate the principle of infrastructure immutability by provisioning fresh instances when you need to make changes. In this way, you avoid configuration drift.
+ - You can incorporate the principle of infrastructure immutability by provisioning fresh instances when you need to make changes. In this way, you avoid configuration drifts.
 
 ## AWS CodeDeploy offers two ways to perform blue/green deployments:
 
