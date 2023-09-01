@@ -1,21 +1,13 @@
 version: 0.0
-os: linux
-files:
-  - source: /index.html
-    destination: /var/www/html/t
-hooks:
-  BeforeInstall:
-    - location: scripts/install_dependencies
-      timeout: 300
-      runas: root
-    - location: scripts/cleanup_files
-      timeout: 300
-      runas: root
-    - location: scripts/start_server
-      timeout: 300
-      runas: root
-  ApplicationStop:
-    - location: scripts/stop_server
-      timeout: 300
-      runas: root
-
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:eu-west-1:1234567:task-definition/haproxy_group:48"
+        LoadBalancerInfo:
+          ContainerName: "haproxy_container"
+          ContainerPort: 80
+        CapacityProviderStrategy:
+          - CapacityProvider: "haproxy-stage_capacity_provider"
+            Base: 0
+            Weight: 1
