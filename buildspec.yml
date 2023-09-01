@@ -11,5 +11,6 @@ phases:
     commands:
       - cat index.html
 artifacts:
-  files: myappspec.zip
-    
+  files: 
+    - '**/*'
+
