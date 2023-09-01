@@ -6,14 +6,10 @@ phases:
   build:
     commands:
       - sed -i -e "s/{{CODEBUILD_BUILD_NUMBER}}/$CODEBUILD_BUILD_NUMBER/g" index.html
+      - zip -r myappspec.zip appspec.yml
   post_build:
     commands:
       - cat index.html
 artifacts:
-  files:
-    - index.html
-    - appspec.yml
-    - scripts/cleanup_files
-    - scripts/install_dependencies
-    - scripts/start_server
-    - scripts/stop_server
+  files:myappspec.zip
+    
